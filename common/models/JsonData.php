@@ -6,7 +6,7 @@
  * Time: 14:09
  */
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 use yii\base\Object;
@@ -36,7 +36,7 @@ class JsonData extends Object
             }
 
         }
-        return json_encode($field);
+        //return json_encode($field);
         //Test
     }
 }
