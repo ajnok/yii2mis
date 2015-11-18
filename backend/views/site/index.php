@@ -5,6 +5,13 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
-
-    <h1><?= $model ?></h1>
+    <?php
+        echo("apiField: <br />");
+        var_dump($apiField);
+        echo("apiField: <br />");
+        echo("<br /><br /><br />");
+        var_dump($dbField);
+        echo("<br /><br /><br />");
+        var_dump($insertedField);
+    ?>
 </div>
