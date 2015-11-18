@@ -12,6 +12,15 @@ $this->title = 'My Yii Application';
         echo("<br /><br /><br />");
         var_dump($dbField);
         echo("<br /><br /><br />");
-        var_dump($insertedField);
+//        var_dump($insertedField);
+
+
+    ?>
+
+    <?php
+    $array1 = array("a" => "green", "red", "blue");
+    $array2 = array("b" => "green", "red", "blue");
+    $result = array_diff($array1, $array2);
+    print_r($result);
     ?>
 </div>
