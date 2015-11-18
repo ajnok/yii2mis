@@ -5,10 +5,13 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
-    <?php print_r($jsonField); ?>
-    <br />
-    <?php var_dump($dbField); ?>
-
-
-
+    <?php
+        echo("apiField: <br />");
+        var_dump($apiField);
+        echo("apiField: <br />");
+        echo("<br /><br /><br />");
+        var_dump($dbField);
+        echo("<br /><br /><br />");
+        var_dump($insertedField);
+    ?>
 </div>

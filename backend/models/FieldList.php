@@ -4,7 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\db\Expression;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "field_list".
  *
@@ -68,5 +68,10 @@ class FieldList extends \yii\db\ActiveRecord
             ];
         }
         return Yii::$app->db->createCommand()->batchInsert('field_list', ['field','inserted_at'], $data)->execute();
+    }
+
+    public static function loadField()
+    {
+        return (FieldList::find()->select('field')->orderBy(['field' => SORT_ASC])->asArray()->all());
     }
 }

@@ -69,22 +69,23 @@ class SiteController extends Controller
             {
 
                 $fieldList = new FieldList();
-                $dbField = $fieldList->find()->orderBy(['field' => SORT_ASC])->all();
+//                $dbField = $fieldList->find()->select('field')->orderBy(['field' => SORT_ASC])->asArray()->all();
+                $dbField = $fieldList::loadField();
+                $insertedField = 0;
                 //Check if database is blank.
                 if (count($dbField) === 0) {
                     //Insert all new json field into the database.
-
-                       $apiData = FieldList::saveMultipleField($apiField);
-
-
+                       $insertedField = FieldList::saveMultipleField($apiField);
                 } else {
                     //Check for new field, excluded field and update existing field from excluded to new
                     //Check for new field
-
+                  //  $new = array_diff($apiField,$dbField);
                 }
             } else {
-
-
+                //Load Data from Local Database (Not included in this version).
+                //Below for test only
+                $apiField =$apiPerson;
+                $apiData= $apiPerson;
             }
         } else
         {
@@ -94,8 +95,9 @@ class SiteController extends Controller
             $apiData= $apiPerson;
         }
         return $this->render('index', [
-            'jsonField' => $apiField,
-            'dbField' => $apiData,
+            'dbField' => $dbField,
+            'apiField' => $apiField,
+            'insertedField' => $insertedField,
         ]);
     }
 
