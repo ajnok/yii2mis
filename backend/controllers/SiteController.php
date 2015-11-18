@@ -58,34 +58,44 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $jsonData = new LoadApi();
+        $LoadApi = new LoadApi();
 //        $jsonField = array_keys(array_change_key_case($jsonData->arrayperson[0],CASE_LOWER));
-        $jsonData = $jsonData->person;
-        $fieldList = new FieldList();
-        $dbField = $fieldList->find()->orderBy(['field'=>SORT_ASC])->all();
-//        if(count($jsonField)>0)
-//        {
-//            //$jsonField = strtolower($jsonField);
-//            //$jsonField = ArrayHelper::multisort($jsonField,SORT_DESC);
-//            //Check if database is blank.
-//            if(count($dbField)===0)
-//            {
-//                //Insert all new json field into the database.
-//
-//            }else
-//            {
-//                //Check for new field, excluded field and update existing field from excluded to new
-//                //Check for new field
-//
-//            }
-//        }else
-//        {
-//            //Load Data from Local Database (Not included in this version).
-//        }
+        $apiPerson = $LoadApi->person;
+        if (count($apiPerson) > 0) {
+            $apiField = ArrayHelper::getValue($apiPerson,'field');
+            $apiData = ArrayHelper::getValue($apiPerson,'data');
 
-        return $this->render('index',[
-            'jsonField' => $jsonData,
-            'dbField' => $dbField,
+            if (count($apiField) > 0)
+            {
+
+                $fieldList = new FieldList();
+                $dbField = $fieldList->find()->orderBy(['field' => SORT_ASC])->all();
+                //Check if database is blank.
+                if (count($dbField) === 0) {
+                    //Insert all new json field into the database.
+
+                       $apiData = FieldList::saveMultipleField($apiField);
+
+
+                } else {
+                    //Check for new field, excluded field and update existing field from excluded to new
+                    //Check for new field
+
+                }
+            } else {
+
+
+            }
+        } else
+        {
+            //Load Data from Local Database (Not included in this version).
+            //Below for test only
+            $apiField =$apiPerson;
+            $apiData= $apiPerson;
+        }
+        return $this->render('index', [
+            'jsonField' => $apiField,
+            'dbField' => $apiData,
         ]);
     }
 

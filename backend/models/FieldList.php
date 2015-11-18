@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "field_list".
@@ -53,5 +54,19 @@ class FieldList extends \yii\db\ActiveRecord
             'excluded' => 'Excluded',
             'inserted_at' => 'Inserted At',
         ];
+    }
+
+    public static function saveMultipleField($field)
+    {
+        $time = new Expression("NOW()");
+        $data = array();
+        foreach($field as $value){
+            $data[]=[
+                $value,
+                $time,
+
+            ];
+        }
+        return Yii::$app->db->createCommand()->batchInsert('field_list', ['field','inserted_at'], $data)->execute();
     }
 }

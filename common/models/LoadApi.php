@@ -13,9 +13,10 @@ use yii\helpers\Json;
 
 class LoadApi extends Object
 {
-    private $_url_personal = 'http://mis.kpru.ac.th/api/EmployeeInOrg/9999';
+    private $_url_personal = 'http://mis.kpru.ac.th/api/EmployeeInOrg/012';
     private $_url_student = '';
-    private $_data = '';
+    private $_data;
+    private $_field;
 
     public function getPerson()
     {
@@ -30,12 +31,22 @@ class LoadApi extends Object
 
     private function _getData($mode = 'personal')
     {
+
         if (isset($mode)) {
             $mode = '_url_' . $mode;
             $this->_data = file_get_contents($this->$mode);
-            if(self::is_json($this->_data))
-            {
-                return "OK";
+            if(self::is_json($this->_data)) {
+                $this->_data = Json::decode($this->_data);
+                if (count($this->_data) > 0) {
+                    $this->_field = array_keys(array_change_key_case($this->_data[0], CASE_LOWER));
+                    sort($this->_field);
+                    $this->_field = array_unique($this->_field);
+                    return ['field'=>$this->_field,'data'=>$this->_data];
+//                    return array(); // This for test return empty only
+                } else
+                {
+                    return array();
+                }
             } else
             {
                 return array();
@@ -43,13 +54,11 @@ class LoadApi extends Object
         } else {
             return array();
         }
-
-
     }
 
     private function is_json($string, $return_data = false)
     {
-        $this->_data = json_decode($string);
+//        $this->_data = json_decode($string);
         return (json_last_error() == JSON_ERROR_NONE) ? ($return_data ? $this->_data : true) : false;
     }
 }
