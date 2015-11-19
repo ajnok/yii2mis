@@ -108,7 +108,7 @@ class HTMLPurifier_LanguageFactory
             $lang = new HTMLPurifier_Language($config, $context);
         } else {
             $class = 'HTMLPurifier_Language_' . $pcode;
-            $file  = $this->dir . '/Language/classes/' . $code . '.php';
+            $file  = $this->dir . '/Language/classes/' . $code . 'info.php';
             if (file_exists($file) || class_exists($class, false)) {
                 $lang = new $class($config, $context);
             } else {
@@ -153,7 +153,7 @@ class HTMLPurifier_LanguageFactory
         }
 
         // generate filename
-        $filename = $this->dir . '/Language/messages/' . $code . '.php';
+        $filename = $this->dir . '/Language/messages/' . $code . 'info.php';
 
         // default fallback : may be overwritten by the ensuing include
         $fallback = ($code != 'en') ? 'en' : false;

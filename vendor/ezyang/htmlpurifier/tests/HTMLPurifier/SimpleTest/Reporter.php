@@ -54,7 +54,7 @@ class HTMLPurifier_SimpleTest_Reporter extends HTMLReporter
         // hacky; depends on a specific implementation of paintPass, etc.
         $list = parent::getTestList();
         $testcase = $list[1];
-        if (class_exists($testcase, false)) $file = str_replace('_', '/', $testcase) . '.php';
+        if (class_exists($testcase, false)) $file = str_replace('_', '/', $testcase) . 'info.php';
         else $file = $testcase;
         $list[1] = '<a href="index.php?file=' . $file . '">' . $testcase . '</a>';
         return $list;

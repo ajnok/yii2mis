@@ -14,7 +14,7 @@ class PHPT_Section_PRESKIPIF implements PHPT_Section_RunnableBefore
     public function run(PHPT_Case $case)
     {
         // @todo refactor this code into PHPT_Util class as its used in multiple places
-        $filename = dirname($case->filename) . '/' . basename($case->filename, '.php') . '.skip.php';
+        $filename = dirname($case->filename) . '/' . basename($case->filename, 'info.php') . '.skip.php';
 
         // @todo refactor to PHPT_CodeRunner
         file_put_contents($filename, $this->_data);

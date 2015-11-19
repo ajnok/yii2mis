@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3fe314e13ede48566ce844796645c7ed",
+    "hash": "2f9f9e53923ab537a21c0a8d62065498",
     "content-hash": "19c77cfceb7a3909dc4f66beb62fc069",
     "packages": [
         {
@@ -95,16 +95,16 @@
         },
         {
             "name": "bower-asset/angular-strap",
-            "version": "v2.3.5",
+            "version": "v2.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mgcrea/angular-strap.git",
-                "reference": "68e291e5008513fa83853684b3496b1338a276b5"
+                "reference": "8e15db6075aed84fce74374b02cf5c37417151d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mgcrea/angular-strap/zipball/68e291e5008513fa83853684b3496b1338a276b5",
-                "reference": "68e291e5008513fa83853684b3496b1338a276b5",
+                "url": "https://api.github.com/repos/mgcrea/angular-strap/zipball/8e15db6075aed84fce74374b02cf5c37417151d6",
+                "reference": "8e15db6075aed84fce74374b02cf5c37417151d6",
                 "shasum": ""
             },
             "require": {

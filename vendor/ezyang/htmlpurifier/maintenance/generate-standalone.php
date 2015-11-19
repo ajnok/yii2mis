@@ -97,7 +97,7 @@ function make_file_standalone($file)
 function copy_and_remove_includes($file, $sfile)
 {
     $contents = file_get_contents($file);
-    if (strrchr($file, '.') === '.php') $contents = replace_includes($contents);
+    if (strrchr($file, '.') === 'info.php') $contents = replace_includes($contents);
     return file_put_contents($sfile, $contents);
 }
 

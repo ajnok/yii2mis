@@ -13,7 +13,7 @@ function __autoload($class)
         if (HTMLPurifier_Bootstrap::autoload($class)) return true;
         if (HTMLPurifierExtras::autoload($class)) return true;
     }
-    require str_replace('_', '/', $class) . '.php';
+    require str_replace('_', '/', $class) . 'info.php';
     return true;
 }
 if (function_exists('spl_autoload_register')) {
@@ -162,7 +162,7 @@ function htmlpurifier_add_test($test, $test_file, $only_phpt = false)
     switch (strrchr($test_file, ".")) {
         case '.phpt':
             return $test->add(new PHPT_Controller_SimpleTest($test_file));
-        case '.php':
+        case 'info.php':
             require_once $test_file;
             return $test->add(path2class($test_file));
         case '.vtest':

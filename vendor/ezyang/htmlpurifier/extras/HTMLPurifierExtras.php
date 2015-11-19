@@ -23,7 +23,7 @@ class HTMLPurifierExtras
         ) return false;
         // Custom implementations can go here
         // Standard implementation:
-        return str_replace('_', '/', $class) . '.php';
+        return str_replace('_', '/', $class) . 'info.php';
     }
 
 }

@@ -134,7 +134,7 @@ class FieldList extends \yii\db\ActiveRecord
 
     public static function loadAllFields()
     {
-        $data = (FieldList::find()->select(['field','excluded'])->orderBy(['field' => SORT_ASC])->asArray()->all());
+//        $data = (FieldList::find()->select(['field','excluded'])->orderBy(['field' => SORT_ASC])->asArray()->all());
 //        $fields = array();
 //        foreach($data as $i)
 //        {
@@ -145,7 +145,7 @@ class FieldList extends \yii\db\ActiveRecord
 //            $fields[] =$i;
 //        }
 //        return $fields;
-        return $data;
+        return (FieldList::find()->orderBy(['field' => SORT_ASC])->asArray()->all());
     }
 
     public static function excludeMultipleFields($fields)
@@ -165,9 +165,9 @@ class FieldList extends \yii\db\ActiveRecord
             }
 
         }
-        return $data;
+//        return $data;
+        return  (FieldList::find()->orderBy(['field' => SORT_ASC])->asArray()->all());
     }
-
     public static function renewMultipleFields($fields)
     {
         $time = new Expression("NOW()");
@@ -185,6 +185,7 @@ class FieldList extends \yii\db\ActiveRecord
             }
 
         }
-        return $data;
+//        return $data;
+        return  (FieldList::find()->orderBy(['field' => SORT_ASC])->asArray()->all());
     }
 }

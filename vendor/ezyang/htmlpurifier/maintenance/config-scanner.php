@@ -22,7 +22,7 @@ if (version_compare(PHP_VERSION, '5.2.2', '<')) {
 
 $FS = new FSTools();
 chdir(dirname(__FILE__) . '/../library/');
-$raw_files = $FS->globr('.', '*.php');
+$raw_files = $FS->globr('.', '*info.php');
 $files = array();
 foreach ($raw_files as $file) {
     $file = substr($file, 2); // rm leading './'

@@ -61,10 +61,10 @@ foreach ($files as $file) {
         postfix_is('Changelog', $file)
     ) $ext = '.txt';
     if (postfix_is('Doxyfile', $file)) $ext = 'Doxyfile';
-    if (postfix_is('.php.in', $file)) $ext = '.php';
+    if (postfix_is('info.php.in', $file)) $ext = 'info.php';
     $no_nl = false;
     switch ($ext) {
-        case '.php':
+        case 'info.php':
         case '.inc':
         case '.js':
             $line = '// %s';

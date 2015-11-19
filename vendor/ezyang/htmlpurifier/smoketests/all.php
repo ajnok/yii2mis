@@ -26,7 +26,7 @@ $dir = './';
 $dh  = opendir($dir);
 while (false !== ($filename = readdir($dh))) {
     if ($filename[0] == '.') continue;
-    if (strpos($filename, '.php') === false) continue;
+    if (strpos($filename, 'info.php') === false) continue;
     if ($filename == 'common.php') continue;
     if ($filename == 'all.php') continue;
     if ($filename == 'testSchema.php') continue;

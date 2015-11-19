@@ -34,7 +34,7 @@ $exclude_files = array(
 
 // Determine what files need to be included:
 echo 'Scanning for files... ';
-$raw_files = $FS->globr('.', '*.php');
+$raw_files = $FS->globr('.', '*info.php');
 if (!$raw_files) throw new Exception('Did not find any PHP source files');
 $files = array();
 foreach ($raw_files as $file) {

@@ -16,7 +16,7 @@ exit;
 chdir(dirname(__FILE__) . '/../library/');
 $FS = new FSTools();
 
-$files = $FS->globr('.', '*.php');
+$files = $FS->globr('.', '*info.php');
 foreach ($files as $file) {
     if (substr_count(basename($file), '.') > 1) continue;
     $old_code = file_get_contents($file);
