@@ -121,7 +121,7 @@ class SiteController extends Controller
         $exclude = new ArrayDataProvider([
             'key' => 'id',
             'allModels' => $exclude,
-
+//            'sort' => ['id','sunit_name','employee_type_name'],
         ]);
         $include = array_filter($dbField,function($ar){
             return ((int)$ar['excluded'] === 0 );
@@ -129,9 +129,9 @@ class SiteController extends Controller
         $include = new ArrayDataProvider([
             'key' => 'id',
             'allModels' => $include,
-
+//            'sort' => ['id','sunit_name','employee_type_name'],
         ]);
-        $searchModel = $dbField;
+        $searchModel = $dbField ;
         return $this->render('index', [
             'include' => $include,
             'exclude' => $exclude,
